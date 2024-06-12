@@ -14,6 +14,56 @@
     <link rel="stylesheet" href="libs/font-awesome/css/font-awesome.min.css" />
     <link href="css/bootstrap.min.css" rel="stylesheet" />
     <link href="css/styles.css" rel="stylesheet" />
+    <style>
+      #skills {
+        text-align: center;
+      }
+
+      .gallery {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+      }
+
+      .thumbnail {
+        width: 100px;
+        height: auto;
+        cursor: pointer;
+        transition: transform 0.2s;
+      }
+
+      .thumbnail:hover {
+        transform: scale(1.1);
+      }
+
+      .lightbox {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.8);
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+      }
+
+      .lightbox img {
+        max-width: 90%;
+        max-height: 80%;
+      }
+
+      .lightbox .close {
+        position: absolute;
+        top: 20px;
+        right: 30px;
+        font-size: 40px;
+        color: white;
+        cursor: pointer;
+      }
+    </style>
   </head>
 
   <body>
@@ -233,37 +283,70 @@
     </div>
     <!-- End #projects -->
 
-    <!-- <div id="skills">
-        <h2 class="heading">Skills</h2>
-        <ul>
-            <li>JavaScript</li>
-            <li>Python</li>
-            <li>Ruby</li>
-            <li>Go</li>
-            <li>Node.js</li>
-            <li>AngularJs</li>
-            <li>React</li>
-            <li>Elixir</li>
-            <li>Java</li>
-            <li>C</li>
-            <li>C#</li>
-            <li>C++</li>
-            <li>Ruby on Rails</li>
-            <li>JavaScript</li>
-            <li>Python</li>
-            <li>Ruby</li>
-            <li>Go</li>
-            <li>Node.js</li>
-            <li>AngularJs</li>
-            <li>React</li>
-            <li>Elixir</li>
-            <li>Java</li>
-            <li>C</li>
-            <li>C#</li>
-            <li>C++</li>
-            <li>Ruby on Rails</li>
-        </ul>
-    </div> -->
+    <div id="skills">
+      <h2 class="heading">Work Gallery</h2>
+      <div class="gallery">
+        <img
+          src="../images/projects/scm1.png"
+          alt="Project 1"
+          class="thumbnail"
+        />
+        <img
+          src="../images/projects/scm2.png"
+          alt="Project 2"
+          class="thumbnail"
+        />
+        <img
+          src="../images/projects/scm3.png"
+          alt="Project 3"
+          class="thumbnail"
+        />
+        <img
+          src="../images/projects/scm4.png"
+          alt="Project 4"
+          class="thumbnail"
+        />
+        <img
+          src="../images/projects/scm5.png"
+          alt="Project 5"
+          class="thumbnail"
+        />
+        <img
+          src="../images/projects/scm6.png"
+          alt="Project 6"
+          class="thumbnail"
+        />
+        <img
+          src="../images/projects/scm7.png"
+          alt="Project 7"
+          class="thumbnail"
+        />
+        <img
+          src="../images/projects/scm8.png"
+          alt="Project 8"
+          class="thumbnail"
+        />
+        <img
+          src="../images/projects/scm9.png"
+          alt="Project 9"
+          class="thumbnail"
+        />
+        <img
+          src="../images/projects/scm10.png"
+          alt="Project 10"
+          class="thumbnail"
+        />
+        <img
+          src="../images/projects/scm11.png"
+          alt="Project 11"
+          class="thumbnail"
+        />
+      </div>
+      <div id="lightbox" class="lightbox">
+        <span class="close">&times;</span>
+        <img class="lightbox-content" id="lightbox-img" />
+      </div>
+    </div>
     <!-- End #skills -->
 
     <div id="contact">
@@ -330,5 +413,30 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="js/scripts.min.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const thumbnails = document.querySelectorAll(".thumbnail");
+        const lightbox = document.getElementById("lightbox");
+        const lightboxImg = document.getElementById("lightbox-img");
+        const closeBtn = document.querySelector(".close");
+
+        thumbnails.forEach((thumbnail) => {
+          thumbnail.addEventListener("click", function () {
+            lightbox.style.display = "flex";
+            lightboxImg.src = this.src;
+          });
+        });
+
+        closeBtn.addEventListener("click", function () {
+          lightbox.style.display = "none";
+        });
+
+        lightbox.addEventListener("click", function (e) {
+          if (e.target !== lightboxImg) {
+            lightbox.style.display = "none";
+          }
+        });
+      });
+    </script>
   </body>
 </html>
